@@ -7,7 +7,7 @@
 using namespace std;
 
 
-class Pojazd {
+class Samochod  {
 protected:
     string marka;
     string model;
@@ -17,8 +17,8 @@ protected:
     bool sprzedany;
 
 public:
-    Pojazd(string m, string mod, int rocz, double c, int przeb);
-    virtual ~Pojazd();
+    Samochod(string m, string mod, int rocz, double c, int przeb);
+    virtual ~Samochod();
 
 
     virtual void wyswietlInfo() const = 0;
