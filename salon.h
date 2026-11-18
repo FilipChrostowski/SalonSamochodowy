@@ -17,22 +17,28 @@ private:
 public:
     Klient(string im, string naz, string tel);
     void wyswietlKlienta() const;
+    string getPelneDane() const;
 };
 
 class SalonSamochodowy {
 private:
-    vector<Pojazd*> flota;
+    vector<Samochod*> flota;
     vector<Klient> klienci;
 
 public:
     ~SalonSamochodowy();
 
-    void dodajPojazd(Pojazd* nowyPojazd);
+    void dodajSamochod(Samochod* nowySamochod);
     void wyswietlOferte() const;
     void oznaczJakoSprzedany(int indeks);
 
     void dodajKlienta(const Klient& klient);
     void wyswietlKlientow() const;
+    
+    int getLiczbaSamochodow() const;
+    int getLiczbaKlientow() const;
+
+    void zapiszNaJazdeProbna(int indexAuto, int indexKlient);
 };
 
 #endif

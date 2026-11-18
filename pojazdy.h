@@ -6,8 +6,7 @@
 
 using namespace std;
 
-
-class Samochod  {
+class Samochod {
 protected:
     string marka;
     string model;
@@ -18,20 +17,16 @@ protected:
 
 public:
     Samochod(string m, string mod, int rocz, double c, int przeb);
-    virtual ~Samochod();
+    virtual ~Samochod() = default;
 
-
-    virtual void wyswietlInfo() const = 0;
-    virtual string getTypNapedu() const = 0;
-
-    
+    string getMarka() const;
+    string getModel() const;
     double getCena() const;
     bool czySprzedany() const;
     void oznaczJakoSprzedany();
-    string getMarka() const;
-    string getModel() const;
-};
 
+    virtual void wyswietlInfo() const = 0;
+};
 
 class Benzyna : public Samochod {
 private:
@@ -40,43 +35,37 @@ private:
 public:
     Benzyna(string m, string mod, int rocz, double c, int przeb, double poj);
     void wyswietlInfo() const override;
-    string getTypNapedu() const override;
 };
-
 
 class Diesel : public Samochod {
 private:
-    double pojemnoscSilnika; 
-    bool filtrDpf;
+    double pojemnoscSilnika;
+    bool posiadaDPF;
 
 public:
     Diesel(string m, string mod, int rocz, double c, int przeb, double poj, bool dpf);
     void wyswietlInfo() const override;
-    string getTypNapedu() const override;
 };
-
 
 class Hybryda : public Samochod {
 private:
-    double pojemnoscBaterii; 
-    int mocSystemowa;        
+    double pojemnoscSilnika;
+    double pojemnoscBaterii;
+    int mocSilnika;
 
 public:
-    Hybryda(string m, string mod, int rocz, double c, int przeb, double bat, int moc);
+    Hybryda(string m, string mod, int rocz, double c, int przeb, double poj, double bat, int moc);
     void wyswietlInfo() const override;
-    string getTypNapedu() const override;
 };
-
 
 class Elektryk : public Samochod {
 private:
-    double pojemnoscBaterii; 
-    int zasiegWltp;          
+    double pojemnoscBaterii;
+    int zasiegKm;
 
 public:
     Elektryk(string m, string mod, int rocz, double c, int przeb, double bat, int zasieg);
     void wyswietlInfo() const override;
-    string getTypNapedu() const override;
 };
 
 #endif
