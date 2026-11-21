@@ -15,9 +15,12 @@ private:
     string telefon;
 
 public:
+    Klient();
     Klient(string im, string naz, string tel);
     void wyswietlKlienta() const;
     string getPelneDane() const;
+
+    friend ostream& operator<<(ostream& os, const Klient& k);
 };
 
 class SalonSamochodowy {
@@ -34,7 +37,7 @@ public:
 
     void dodajKlienta(const Klient& klient);
     void wyswietlKlientow() const;
-    
+
     int getLiczbaSamochodow() const;
     int getLiczbaKlientow() const;
 

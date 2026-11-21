@@ -16,14 +16,20 @@ protected:
     bool sprzedany;
 
 public:
+    Samochod();
     Samochod(string m, string mod, int rocz, double c, int przeb);
     virtual ~Samochod() = default;
 
     string getMarka() const;
     string getModel() const;
+    int getRocznik() const;
     double getCena() const;
+    int getPrzebieg() const;
     bool czySprzedany() const;
     void oznaczJakoSprzedany();
+
+    bool operator==(const Samochod& inny) const;
+    bool operator<(const Samochod& inny) const;
 
     virtual void wyswietlInfo() const = 0;
 };

@@ -1,16 +1,32 @@
 #include "salon.h"
+#include <stdexcept>
 
 using namespace std;
 
+Klient::Klient()
+    : imie("Brak"), nazwisko("Brak"), telefon("000-000-000") {}
+
 Klient::Klient(string im, string naz, string tel)
-    : imie(im), nazwisko(naz), telefon(tel) {}
+    : imie(im), nazwisko(naz), telefon(tel) {
+    if (im.empty() || naz.empty()) {
+        throw invalid_argument("Imie i nazwisko klienta nie moga byc puste.");
+    }
+    if (tel.length() < 9) {
+        throw invalid_argument("Numer telefonu musi miec co najmniej 9 znakow.");
+    }
+}
 
 void Klient::wyswietlKlienta() const {
-    cout << "Klient: " << imie << " " << nazwisko << " | Tel: " << telefon << endl;
+    cout << *this << endl;
 }
 
 string Klient::getPelneDane() const {
     return imie + " " + nazwisko + " (" + telefon + ")";
+}
+
+ostream& operator<<(ostream& os, const Klient& k) {
+    os << "Klient: " << k.imie << " " << k.nazwisko << " | Tel: " << k.telefon;
+    return os;
 }
 
 SalonSamochodowy::~SalonSamochodowy() {
@@ -21,6 +37,14 @@ SalonSamochodowy::~SalonSamochodowy() {
 }
 
 void SalonSamochodowy::dodajSamochod(Samochod* nowySamochod) {
+    if (nowySamochod == nullptr) {
+        throw invalid_argument("Wskaznik na samochod nie moze byc pusty.");
+    }
+    for (size_t i = 0; i < flota.size(); ++i) {
+        if (*flota[i] == *nowySamochod) {
+            cout << "Uwaga: Taki sam model z tego rocznika jest juz we flocie." << endl;
+        }
+    }
     flota.push_back(nowySamochod);
 }
 
@@ -36,12 +60,11 @@ void SalonSamochodowy::wyswietlOferte() const {
 }
 
 void SalonSamochodowy::oznaczJakoSprzedany(int indeks) {
-    if (indeks >= 0 && indeks < getLiczbaSamochodow()) {
-        flota[indeks]->oznaczJakoSprzedany();
-        cout << "Samochod zostal oznaczony jako sprzedany!" << endl;
-    } else {
-        cout << "Nieprawidlowy indeks samochodu!" << endl;
+    if (indeks < 0 || indeks >= getLiczbaSamochodow()) {
+        throw out_of_range("Nieprawidlowy indeks samochodu.");
     }
+    flota[indeks]->oznaczJakoSprzedany();
+    cout << "Samochod zostal oznaczony jako sprzedany!" << endl;
 }
 
 void SalonSamochodowy::dodajKlienta(const Klient& klient) {
@@ -55,8 +78,7 @@ void SalonSamochodowy::wyswietlKlientow() const {
         return;
     }
     for (size_t i = 0; i < klienci.size(); ++i) {
-        cout << i << ". ";
-        klienci[i].wyswietlKlienta();
+        cout << i << ". " << klienci[i] << endl;
     }
 }
 
@@ -69,15 +91,15 @@ int SalonSamochodowy::getLiczbaKlientow() const {
 }
 
 void SalonSamochodowy::zapiszNaJazdeProbna(int indexAuto, int indexKlient) {
-    if (indexAuto >= 0 && indexAuto < getLiczbaSamochodow() &&
-        indexKlient >= 0 && indexKlient < getLiczbaKlientow()) {
-        
-        cout << "\n[JAZDA PROBNA] Sukces!" << endl;
-        cout << "Klient: ";
-        klienci[indexKlient].wyswietlKlienta();
-        cout << "Zostal zapisany na jazde probna samochodem: ";
-        flota[indexAuto]->wyswietlInfo();
-    } else {
-        cout << "Blad: Nieprawidlowy indeks samochodu lub klienta!" << endl;
+    if (indexAuto < 0 || indexAuto >= getLiczbaSamochodow()) {
+        throw out_of_range("Nieprawidlowy indeks samochodu przy zapisie na jazde probna.");
     }
+    if (indexKlient < 0 || indexKlient >= getLiczbaKlientow()) {
+        throw out_of_range("Nieprawidlowy indeks klienta przy zapisie na jazde probna.");
+    }
+
+    cout << "\n[JAZDA PROBNA] Sukces!" << endl;
+    cout << klienci[indexKlient] << endl;
+    cout << "Zostal zapisany na jazde probna samochodem: ";
+    flota[indexAuto]->wyswietlInfo();
 }
