@@ -25,3 +25,35 @@ Wymagany kompilator wspierający standard C++17 (np. `g++` z pakietu MinGW).
 
 ```bash
 g++ -std=c++17 main.cpp pojazdy.cpp salon.cpp -o salon.exe
+
+
+Przykłady działania programu
+1. Próba dodania klienta z nieprawidłowym numerem telefonu (obsługa wyjątku)
+
+--- NOWY KLIENT ---
+Imie: Jan
+Nazwisko: Kowalski
+Telefon: 22
+Blad: Numer telefonu musi miec co najmniej 9 znakow. Klient NIE zostal dodany.
+
+2. Dodanie poprawnego klienta i zapis na jazdę próbną
+--- NOWY KLIENT ---
+Imie: Anna
+Nazwisko: Nowak
+Telefon: 501-202-303
+Dodano nowego klienta!
+
+
+
+[JAZDA PROBNA] Sukces!
+Klient: Anna Nowak | Tel: 501-202-303
+Zostal zapisany na jazde probna samochodem: [Benzyna] Volkswagen Golf GTI | Rok: 2011 | Przebieg: 180000 km | Silnik: 2 L | Cena: 45000 PLN | Status: Dostepny
+3. Wyszukanie najtańszego samochodu we flocie (opcja 8)
+
+
+--- NAJTANSZY SAMOCHOD WE FLOCIE ---
+[Benzyna] Volkswagen Golf GTI | Rok: 2011 | Przebieg: 180000 km | Silnik: 2 L | Cena: 45000 PLN | Status: Dostepny
+
+4. Próba operacji na niepoprawnym indeksie
+
+Blad: Nieprawidlowy indeks samochodu.
