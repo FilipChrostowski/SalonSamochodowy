@@ -27,8 +27,8 @@ int main() {
         cout << "4. Wyswietl liste klientow" << endl;
         cout << "5. Dodaj klienta" << endl;
         cout << "6. Zapisz klienta na jazde probna" << endl;
-        cout << "7. Wyjscie" << endl;
-        cout << "8. Wyswietl najtanszy samochod" << endl;
+        cout << "7. Wyswietl najtanszy samochod" << endl;
+        cout << "8. Wyjscie" << endl;
         cout << "Wybor: ";
         cin >> wybor;
 
@@ -149,13 +149,14 @@ int main() {
                     }
                     break;
                 }
-                case 7:
-                    cout << "Koniec pracy." << endl;
-                    break;
-                case 8:
+                case 7: {
                     cout << "\n--- NAJTANSZY SAMOCHOD ---" << endl;
                     salon.wyswietlNajtanszySamochod();
+                    break; }
+                case 8: {
+                    cout << "Koniec pracy." << endl;
                     break;
+                }
                 default:
                     cout << "Nieprawidlowa opcja." << endl;
             }

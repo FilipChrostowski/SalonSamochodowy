@@ -97,6 +97,9 @@ void SalonSamochodowy::zapiszNaJazdeProbna(int indexAuto, int indexKlient) {
     if (indexKlient < 0 || indexKlient >= getLiczbaKlientow()) {
         throw out_of_range("Nieprawidlowy indeks klienta przy zapisie na jazde probna.");
     }
+    if (flota[indexAuto]->czySprzedany()) {
+        throw logic_error("Nie mozna zapisac na jazde probna: ten samochod zostal juz sprzedany.");
+    }
 
     cout << "\n[JAZDA PROBNA] Sukces!" << endl;
     cout << klienci[indexKlient] << endl;
@@ -120,3 +123,4 @@ void SalonSamochodowy::wyswietlNajtanszySamochod() const {
     cout << "\n--- NAJTANSZY SAMOCHOD WE FLOCIE ---" << endl;
     flota[idxNajtanszego]->wyswietlInfo();
 }
+
