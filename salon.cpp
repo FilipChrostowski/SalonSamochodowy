@@ -103,3 +103,20 @@ void SalonSamochodowy::zapiszNaJazdeProbna(int indexAuto, int indexKlient) {
     cout << "Zostal zapisany na jazde probna samochodem: ";
     flota[indexAuto]->wyswietlInfo();
 }
+
+void SalonSamochodowy::wyswietlNajtanszySamochod() const {
+    if (flota.empty()) {
+        cout << "Brak samochodow we flocie." << endl;
+        return;
+    }
+
+    size_t idxNajtanszego = 0;
+    for (size_t i = 1; i < flota.size(); ++i) {
+        if (*flota[i] < *flota[idxNajtanszego]) {
+            idxNajtanszego = i;
+        }
+    }
+
+    cout << "\n--- NAJTANSZY SAMOCHOD WE FLOCIE ---" << endl;
+    flota[idxNajtanszego]->wyswietlInfo();
+}

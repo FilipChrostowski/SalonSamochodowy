@@ -42,6 +42,7 @@ public:
     int getLiczbaKlientow() const;
 
     void zapiszNaJazdeProbna(int indexAuto, int indexKlient);
+    void wyswietlNajtanszySamochod() const;
 };
 
 #endif

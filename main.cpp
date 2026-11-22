@@ -28,6 +28,7 @@ int main() {
         cout << "5. Dodaj klienta" << endl;
         cout << "6. Zapisz klienta na jazde probna" << endl;
         cout << "7. Wyjscie" << endl;
+        cout << "8. Wyswietl najtanszy samochod" << endl;
         cout << "Wybor: ";
         cin >> wybor;
 
@@ -151,13 +152,17 @@ int main() {
                 case 7:
                     cout << "Koniec pracy." << endl;
                     break;
+                case 8:
+                    cout << "\n--- NAJTANSZY SAMOCHOD ---" << endl;
+                    salon.wyswietlNajtanszySamochod();
+                    break;
                 default:
                     cout << "Nieprawidlowa opcja." << endl;
             }
         } catch (const exception& e) {
             cout << "Blad: " << e.what() << endl;
         }
-    } while (wybor != 7);
+    } while (wybor != 8);
 
     return 0;
 }
