@@ -35,7 +35,7 @@ public:
     void wyswietlOferte() const;
     void oznaczJakoSprzedany(int indeks);
 
-    void dodajKlienta(const Klient& klient);
+    void dodajKlienta(const Klient& nowyKlient, bool wypiszKomunikat = true);
     void wyswietlKlientow() const;
 
     int getLiczbaSamochodow() const;

@@ -12,7 +12,7 @@ int main() {
         salon.dodajSamochod(new Benzyna("Volkswagen", "Golf GTI", 2011, 45000, 180000, 2.0));
         salon.dodajSamochod(new Elektryk("Tesla", "Model 3", 2022, 145000, 35000, 75.0, 450));
         salon.dodajSamochod(new Hybryda("Toyota", "Prius", 2020, 85000, 90000, 1.8, 8.8, 122));
-        salon.dodajKlienta(Klient("Jan", "Kowalski", "500-600-700"));
+        salon.dodajKlienta(Klient("Jan", "Kowalski", "500-600-700"), false);
     } catch (const exception& e) {
         cout << "Blad inicjalizacji: " << e.what() << endl;
         return 1;

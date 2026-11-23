@@ -67,9 +67,11 @@ void SalonSamochodowy::oznaczJakoSprzedany(int indeks) {
     cout << "Samochod zostal oznaczony jako sprzedany!" << endl;
 }
 
-void SalonSamochodowy::dodajKlienta(const Klient& klient) {
-    klienci.push_back(klient);
-    cout << "Dodano nowego klienta!" << endl;
+void SalonSamochodowy::dodajKlienta(const Klient& nowyKlient, bool wypiszKomunikat) {
+    klienci.push_back(nowyKlient);
+    if (wypiszKomunikat) {
+        cout << "Dodano nowego klienta!" << endl;
+    }
 }
 
 void SalonSamochodowy::wyswietlKlientow() const {
