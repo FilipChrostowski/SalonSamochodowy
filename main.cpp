@@ -5,6 +5,15 @@
 
 using namespace std;
 
+void czekajNaEnter() {
+    string linia;
+    cout << "\nNacisnij Enter, aby wrocic do panelu glownego...";
+    cin.clear();
+    cin.ignore(10000, '\n');
+    getline(cin, linia);
+}
+
+
 int main() {
     SalonSamochodowy salon;
 
@@ -162,6 +171,9 @@ int main() {
             }
         } catch (const exception& e) {
             cout << "Blad: " << e.what() << endl;
+        }
+        if (wybor != 8) {
+            czekajNaEnter();
         }
     } while (wybor != 8);
 

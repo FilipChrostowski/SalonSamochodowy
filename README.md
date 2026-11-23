@@ -1,6 +1,6 @@
 # System zarządzania salonem samochodowym (C++)
 
-Aplikacja konsolowa napisana w języku C++ realizująca podstawowe operacje w salonie samochodowym z wykorzystaniem programowania obiektowego (OOP), polimorfizmu, przeciążania operatorów oraz obsługi wyjątków.
+Aplikacja konsolowa napisana w języku C++ realizująca podstawowe operacje w salonie samochodowym z wykorzystaniem programowania obiektowego, polimorfizmu, przeciążania operatorów oraz obsługi wyjątków.
 
 ## Struktura projektu
 
@@ -25,6 +25,12 @@ Wymagany kompilator wspierający standard C++17 (np. `g++` z pakietu MinGW).
 
 ```bash
 g++ -std=c++17 main.cpp pojazdy.cpp salon.cpp -o salon.exe
+#windows
+
+./salon.exe
+
+#linux
+./salon
 
 
 Przykłady działania programu
